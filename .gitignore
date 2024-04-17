@@ -37,3 +37,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### format config ###
+/node_modules/
+/package.json
+/package-lock.json
+/.prettierrc.yml
