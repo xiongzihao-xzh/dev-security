@@ -18,6 +18,10 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(authorizeHttpRequests -> {
+            authorizeHttpRequests.anyRequest().authenticated();
+        });
+
         return http.build();
     }
 }
