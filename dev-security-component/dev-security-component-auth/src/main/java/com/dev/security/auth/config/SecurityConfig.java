@@ -1,12 +1,13 @@
 package com.dev.security.auth.config;
 
 import com.dev.security.auth.filter.CustomUsernamePasswordAuthenticationFilter;
+import com.dev.security.auth.userdetails.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -16,7 +17,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * @author <a href="mailto:xiongzihao_xzh@163.com">xzh</a>
  * @date 2024-04-17
  */
-@Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
@@ -30,9 +30,12 @@ public class SecurityConfig {
             .logout(AbstractHttpConfigurer::disable)
             .sessionManagement(AbstractHttpConfigurer::disable)
             .csrf(AbstractHttpConfigurer::disable)
-            .requestCache(AbstractHttpConfigurer::disable)
-            .headers(headers -> headers.cacheControl(HeadersConfigurer.CacheControlConfig::disable));
+            .requestCache(AbstractHttpConfigurer::disable);
 
+        // 设置响应头
+        http.headers(headers -> headers.cacheControl(HeadersConfigurer.CacheControlConfig::disable));
+
+        // 认证和授权配置
         http
             .authorizeHttpRequests(authorizeHttpRequests -> {
                 authorizeHttpRequests.anyRequest().authenticated();
@@ -41,11 +44,16 @@ public class SecurityConfig {
                 new CustomUsernamePasswordAuthenticationFilter(),
                 UsernamePasswordAuthenticationFilter.class
             );
-        
-        // TODO: 
+
+        // TODO:
         //     - 配置 login 认证成功处理器和失败处理器
         //     - 配置 ExceptionTranslationFilter
 
         return http.build();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new CustomUserDetailsService();
     }
 }

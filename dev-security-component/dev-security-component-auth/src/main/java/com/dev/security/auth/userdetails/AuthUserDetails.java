@@ -2,6 +2,9 @@ package com.dev.security.auth.userdetails;
 
 import java.util.Collection;
 import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,7 +14,11 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @author <a href="mailto:xiongzihao_xzh@163.com">xzh</a>
  * @date 2024-04-17
  */
+@Data
+@AllArgsConstructor
 public class AuthUserDetails implements UserDetails {
+    private Long id;
+    private String username;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

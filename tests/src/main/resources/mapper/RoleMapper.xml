@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.security.tests.dao.RoleDao">
+    <resultMap id="BaseResultMap" type="com.dev.security.tests.entity.Role">
+        <!--@mbg.generated-->
+        <!--@Table tb_role-->
+        <id column="id" property="id"/>
+        <result column="role_name" property="roleName"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="delete_flag" property="deleteFlag"/>
+    </resultMap>
+    <resultMap id="RoleVOMap" type="com.dev.security.tests.vo.RoleVO">
+        <id column="role_id" property="id"/>
+        <result column="role_name" property="roleName"/>
+        <collection property="permissions" ofType="java.lang.String">
+            <result column="permission"/>
+        </collection>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id,
+        role_name,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        delete_flag
+    </sql>
+
+    <select id="listRoles" resultMap="RoleVOMap">
+        select r.id         as role_id,
+               r.role_name  as role_name,
+               m.permission as permission
+        from tb_role r
+                 left join tb_role_menu rm on rm.role_id = r.id and rm.delete_flag = 0
+                 left join tb_menu m on m.id = rm.menu_id and m.delete_flag = 0
+        where r.delete_flag = 0
+        <if test="condition.id != null and condition.id != ''">
+            and r.id = #{condition.id}
+        </if>
+        <if test="condition.roleName != null and condition.roleName != ''">
+            and r.role_name = #{condition.roleName}
+        </if>
+    </select>
+
+    <insert id="insert">
+        INSERT INTO tb_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            id,
+            role_name,
+            <if test="createBy != null">
+                create_by,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateBy != null">
+                update_by,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            delete_flag
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            #{id},
+            #{roleName},
+            <if test="createBy != null">
+                #{createBy},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="updateBy != null">
+                #{updateBy},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+            #{deleteFlag}
+        </trim>
+    </insert>
+
+    <update id="updateById">
+        update tb_role
+        <set>
+            <if test="updated.roleName != null">
+                role_name = #{updated.roleName},
+            </if>
+            <if test="updated.createBy != null">
+                create_by = #{updated.createBy},
+            </if>
+            <if test="updated.createTime != null">
+                create_time = #{updated.createTime},
+            </if>
+            <if test="updated.updateBy != null">
+                update_by = #{updated.updateBy},
+            </if>
+            <if test="updated.updateTime != null">
+                update_time = #{updated.updateTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    
+    <delete id="deleteById">
+        update  tb_role
+        set delete_flag = 1
+        where id=#{id}
+    </delete>
+</mapper>
