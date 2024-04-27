@@ -1,0 +1,431 @@
+{
+  "author": "Unnamed",
+  "title": "Untitled Diagram",
+  "date": "2024-04-27T16:40:38.431Z",
+  "tables": [
+    {
+      "name": "tb_user",
+      "comment": "用户表",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "comment": "",
+          "unique": true,
+          "increment": false,
+          "notNull": true,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "username",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "用户名",
+          "id": 1,
+          "size": 255
+        },
+        {
+          "name": "password",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "密码",
+          "id": 2,
+          "size": 255
+        },
+        {
+          "name": "order",
+          "type": "INT",
+          "default": "100",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "顺序",
+          "id": 3
+        }
+      ],
+      "indices": [],
+      "x": -357.8988863709494,
+      "y": -403.68618442674426,
+      "id": 0
+    },
+    {
+      "name": "tb_role",
+      "comment": "角色表",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "comment": "",
+          "unique": true,
+          "increment": false,
+          "notNull": true,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "comment": "角色名",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": 255,
+          "check": "",
+          "id": 1
+        },
+        {
+          "name": "order",
+          "type": "INT",
+          "default": "100",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "顺序",
+          "id": 2
+        }
+      ],
+      "indices": [],
+      "x": 662.440042208468,
+      "y": -409.50275912265585,
+      "id": 1
+    },
+    {
+      "name": "tb_user_role",
+      "comment": "用户角色关联表",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "user_id",
+          "type": "BIGINT",
+          "comment": "",
+          "unique": true,
+          "increment": false,
+          "notNull": true,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "role_id",
+          "type": "BIGINT",
+          "comment": "",
+          "unique": true,
+          "increment": false,
+          "notNull": true,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 1
+        }
+      ],
+      "indices": [],
+      "x": 100.23950036392534,
+      "y": -397.7952945215022,
+      "id": 2
+    },
+    {
+      "name": "tb_menu",
+      "comment": "菜单表",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "comment": "",
+          "unique": true,
+          "increment": false,
+          "notNull": true,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "comment": "菜单名",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": 255,
+          "check": "",
+          "id": 1
+        },
+        {
+          "name": "parent_id",
+          "type": "BIGINT",
+          "comment": "父菜单 id",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "0",
+          "check": "",
+          "id": 2
+        },
+        {
+          "name": "permission",
+          "type": "VARCHAR",
+          "comment": "权限标识",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "",
+          "size": 255,
+          "check": "",
+          "id": 3
+        },
+        {
+          "name": "order",
+          "type": "INT",
+          "default": "100",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "顺序",
+          "id": 4
+        }
+      ],
+      "indices": [],
+      "x": 628.3126919642164,
+      "y": 171.40220729812495,
+      "id": 3
+    },
+    {
+      "name": "tb_role_menu",
+      "comment": "角色菜单关联表",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "role_id",
+          "type": "BIGINT",
+          "comment": "",
+          "unique": true,
+          "increment": false,
+          "notNull": true,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "menu_id",
+          "type": "BIGINT",
+          "comment": "",
+          "unique": true,
+          "increment": false,
+          "notNull": true,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 1
+        }
+      ],
+      "indices": [],
+      "x": 771.5618742074078,
+      "y": -77.26325875873022,
+      "id": 4
+    },
+    {
+      "id": 5,
+      "name": "tb_department",
+      "x": -382.26933880856154,
+      "y": 207.73617943675015,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "部门名字",
+          "id": 1,
+          "size": 255
+        },
+        {
+          "name": "parent_id",
+          "type": "INT",
+          "default": "0",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "上级部门 id",
+          "id": 2
+        },
+        {
+          "name": "order",
+          "type": "INT",
+          "default": "100",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "顺序",
+          "id": 3
+        }
+      ],
+      "comment": "部门表",
+      "indices": [],
+      "color": "#175e7a",
+      "key": 1714235189387
+    },
+    {
+      "id": 6,
+      "name": "tb_user_department",
+      "x": -372.0828734795573,
+      "y": -93.60083272679094,
+      "fields": [
+        {
+          "name": "user_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "department_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1
+        }
+      ],
+      "comment": "用户部门关联表",
+      "indices": [],
+      "color": "#175e7a",
+      "key": 1714235445828
+    }
+  ],
+  "relationships": [
+    {
+      "startTableId": 0,
+      "startFieldId": 0,
+      "endTableId": 2,
+      "endFieldId": 0,
+      "cardinality": "One to many",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "tb_user_id_fk",
+      "id": 0
+    },
+    {
+      "startTableId": 1,
+      "startFieldId": 0,
+      "endTableId": 2,
+      "endFieldId": 1,
+      "cardinality": "One to many",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "tb_role_id_fk",
+      "id": 1
+    },
+    {
+      "startTableId": 4,
+      "startFieldId": 0,
+      "endTableId": 1,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "tb_role_menu_role_id_fk",
+      "id": 2
+    },
+    {
+      "startTableId": 3,
+      "startFieldId": 0,
+      "endTableId": 4,
+      "endFieldId": 1,
+      "cardinality": "One to many",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "tb_menu_id_fk",
+      "id": 3
+    },
+    {
+      "startTableId": 6,
+      "startFieldId": 0,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "tb_user_department_user_id_fk",
+      "id": 4
+    },
+    {
+      "startTableId": 5,
+      "startFieldId": 0,
+      "endTableId": 6,
+      "endFieldId": 1,
+      "cardinality": "One to many",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "tb_department_id_fk",
+      "id": 5
+    }
+  ],
+  "notes": [],
+  "subjectAreas": [],
+  "types": []
+}
