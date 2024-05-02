@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: dev-security-upms
+  profiles:
+    active: dev

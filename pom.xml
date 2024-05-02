@@ -10,6 +10,7 @@
     <modules>
         <module>dev-security-bom</module>
         <module>dev-security-component</module>
+        <module>dev-security-server</module>
     </modules>
 
     <properties>
