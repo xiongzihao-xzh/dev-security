@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.security.upms.mapper.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.dev.security.upms.entity.Menu">
+    <!--@mbg.generated-->
+    <!--@Table tb_menu-->
+    <id column="id" property="id" />
+    <result column="name" property="name" />
+    <result column="type" property="type" />
+    <result column="permission" property="permission" />
+    <result column="order" property="order" />
+    <result column="parent_id" property="parentId" />
+    <result column="create_by" property="createBy" />
+    <result column="create_time" property="createTime" />
+    <result column="update_by" property="updateBy" />
+    <result column="update_time" property="updateTime" />
+    <result column="delete_flag" property="deleteFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, `type`, permission, `order`, parent_id, create_by, create_time, update_by, 
+    update_time, delete_flag
+  </sql>
+</mapper>
