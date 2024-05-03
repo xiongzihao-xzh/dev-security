@@ -1,31 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.security.upms.mapper.UserRoleMapper">
-  <resultMap id="BaseResultMap" type="com.dev.security.upms.entity.UserRole">
-    <!--@mbg.generated-->
-    <!--@Table tb_user_role-->
-    <id column="user_id" property="userId" />
-    <id column="role_id" property="roleId" />
-    <result column="create_by" property="createBy" />
-    <result column="create_time" property="createTime" />
-    <result column="update_by" property="updateBy" />
-    <result column="update_time" property="updateTime" />
-    <result column="delete_flag" property="deleteFlag" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    user_id, role_id, create_by, create_time, update_by, update_time, delete_flag
-  </sql>
-    
-  <update id="updateDeleteFlagByUserId">
+    <resultMap id="BaseResultMap" type="com.dev.security.upms.entity.UserRole">
+        <!--@mbg.generated-->
+        <!--@Table tb_user_role-->
+        <id column="user_id" property="userId"/>
+        <id column="role_id" property="roleId"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="delete_flag" property="deleteFlag"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        user_id, role_id, create_by, create_time, update_by, update_time, delete_flag
+    </sql>
+
+    <insert id="insertList">
+        INSERT INTO tb_user_role(
+        user_id,
+        role_id,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        delete_flag
+        )VALUES
+        <foreach collection="userRoleList" item="userRole" index="index" separator=",">
+            (
+            #{userRole.userId},
+            #{userRole.roleId},
+            #{userRole.createBy},
+            #{userRole.createTime},
+            #{userRole.updateBy},
+            #{userRole.updateTime},
+            #{userRole.deleteFlag}
+            )
+        </foreach>
+    </insert>
+
+    <update id="updateDeleteFlagByUserId">
         update tb_user_role
         set delete_flag=#{updatedDeleteFlag}
         where user_id=#{userId}
     </update>
-  
-  <update id="updateDeleteFlagByRoleId">
-    update tb_user_role
-    set delete_flag=#{updatedDeleteFlag}
-    where role_id=#{roleId}
-  </update>
+
+    <update id="updateDeleteFlagByRoleId">
+        update tb_user_role
+        set delete_flag=#{updatedDeleteFlag}
+        where role_id=#{roleId}
+    </update>
 </mapper>

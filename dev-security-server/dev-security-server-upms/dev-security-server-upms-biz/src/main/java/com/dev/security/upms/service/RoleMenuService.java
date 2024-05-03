@@ -14,7 +14,7 @@ public interface RoleMenuService {
     /**
      * 绑定角色和菜单
      */
-    int binding(List<RoleMenu> roleMenuList);
+    void binding(List<RoleMenu> roleMenuList);
     void unbindByRoleId(long roleId);
     void unbindByMenuId(long menuId);
 }

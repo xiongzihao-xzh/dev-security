@@ -25,11 +25,10 @@ public class RoleMenuServiceImpl implements RoleMenuService {
 
     /**
      * 绑定角色和菜单
-     *
      */
     @Override
-    public int binding(List<RoleMenu> roleMenuList) {
-        return roleMenuMapper.insertList(roleMenuList);
+    public void binding(List<RoleMenu> roleMenuList) {
+        roleMenuMapper.insertList(roleMenuList);
     }
 
     @Override
