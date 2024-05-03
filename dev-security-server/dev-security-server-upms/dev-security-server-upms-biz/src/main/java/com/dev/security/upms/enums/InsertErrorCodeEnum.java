@@ -8,13 +8,14 @@ import com.dev.security.core.exception.ErrorCode;
  * @author <a href="mailto:xiongzihao_xzh@163.com">xzh</a>
  * @date 2024-05-03
  */
-public enum DatabaseErrorCodeEnum implements ErrorCode {
-    DUPLICATE_KEY_ERROR(110001, "插入数据重复！");
+public enum InsertErrorCodeEnum implements ErrorCode {
+    USERNAME_DUPLICATE_KEY_ERROR(110001, "用户名已存在！"),
+    ROLE_DUPLICATE_KEY_ERROR(110002, "角色已存在！");
 
     private final int code;
     private final String message;
 
-    DatabaseErrorCodeEnum(int code, String message) {
+    InsertErrorCodeEnum(int code, String message) {
         this.code = code;
         this.message = message;
     }
