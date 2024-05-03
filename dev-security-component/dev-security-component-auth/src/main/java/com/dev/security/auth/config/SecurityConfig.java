@@ -37,9 +37,7 @@ public class SecurityConfig {
 
         // 认证和授权配置
         http
-            .authorizeHttpRequests(authorizeHttpRequests -> {
-                authorizeHttpRequests.anyRequest().authenticated();
-            })
+            .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests.anyRequest().authenticated())
             .addFilterBefore(
                 new CustomUsernamePasswordAuthenticationFilter(),
                 UsernamePasswordAuthenticationFilter.class

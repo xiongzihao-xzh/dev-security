@@ -1,12 +1,12 @@
 package com.dev.security.auth.userdetails;
 
-import java.util.Collection;
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
  * 认证和授权信息
@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Data
 @AllArgsConstructor
 public class AuthUserDetails implements UserDetails {
+
     private Long id;
     private String username;
 
