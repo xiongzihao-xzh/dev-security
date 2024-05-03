@@ -13,4 +13,22 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DepartmentDTO {}
+public class DepartmentDTO {
+
+    private Long id;
+
+    /**
+     * 部门名字
+     */
+    private String name;
+
+    /**
+     * 顺序
+     */
+    private Integer order;
+
+    /**
+     * 上级部门 id
+     */
+    private Long parentId;
+}
