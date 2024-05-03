@@ -16,4 +16,16 @@
     <!--@mbg.generated-->
     user_id, role_id, create_by, create_time, update_by, update_time, delete_flag
   </sql>
+    
+  <update id="updateDeleteFlagByUserId">
+        update tb_user_role
+        set delete_flag=#{updatedDeleteFlag}
+        where user_id=#{userId}
+    </update>
+  
+  <update id="updateDeleteFlagByRoleId">
+    update tb_user_role
+    set delete_flag=#{updatedDeleteFlag}
+    where role_id=#{roleId}
+  </update>
 </mapper>

@@ -7,6 +7,6 @@ package com.dev.security.upms.service;
  * @date 2024-05-02
  */
 public interface UserRoleService {
-    void removeByRoleId(long roleId);
-    void removeByUserId(long menuId);
+    void unbindByUserId(long userId);
+    void unbindByRoleId(long roleId);
 }

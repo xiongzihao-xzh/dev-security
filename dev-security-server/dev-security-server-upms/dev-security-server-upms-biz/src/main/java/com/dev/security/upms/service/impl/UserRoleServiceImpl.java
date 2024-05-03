@@ -1,5 +1,6 @@
 package com.dev.security.upms.service.impl;
 
+import com.dev.security.core.enums.DeleteFlagEnum;
 import com.dev.security.upms.mapper.UserRoleMapper;
 import com.dev.security.upms.service.UserRoleService;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +21,12 @@ public class UserRoleServiceImpl implements UserRoleService {
     private final UserRoleMapper userRoleMapper;
 
     @Override
-    public void removeByRoleId(long roleId) {}
+    public void unbindByUserId(long userId) {
+        userRoleMapper.updateDeleteFlagByUserId(DeleteFlagEnum.DELETE.code(), userId);
+    }
 
     @Override
-    public void removeByUserId(long userId) {}
+    public void unbindByRoleId(long roleId) {
+        userRoleMapper.updateDeleteFlagByRoleId(DeleteFlagEnum.DELETE.code(), roleId);
+    }
 }

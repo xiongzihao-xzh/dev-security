@@ -3,7 +3,7 @@ package com.dev.security.upms.enums;
 import com.dev.security.core.exception.ErrorCode;
 
 /**
- * 数据库异常
+ * 数据重复异常
  *
  * @author <a href="mailto:xiongzihao_xzh@163.com">xzh</a>
  * @date 2024-05-03

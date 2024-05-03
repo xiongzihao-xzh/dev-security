@@ -1,11 +1,14 @@
 package com.dev.security.upms.service.impl;
 
 import com.dev.security.core.enums.DeleteFlagEnum;
+import com.dev.security.upms.entity.RoleMenu;
 import com.dev.security.upms.mapper.RoleMenuMapper;
 import com.dev.security.upms.service.RoleMenuService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 角色菜单业务类
@@ -20,13 +23,22 @@ public class RoleMenuServiceImpl implements RoleMenuService {
 
     private final RoleMenuMapper roleMenuMapper;
 
+    /**
+     * 绑定角色和菜单
+     *
+     */
     @Override
-    public void removeByRoleId(long roleId) {
+    public int binding(List<RoleMenu> roleMenuList) {
+        return roleMenuMapper.insertList(roleMenuList);
+    }
+
+    @Override
+    public void unbindByRoleId(long roleId) {
         roleMenuMapper.updateDeleteFlagByRoleId(DeleteFlagEnum.DELETE.code(), roleId);
     }
 
     @Override
-    public void removeByMenuId(long menuId) {
+    public void unbindByMenuId(long menuId) {
         roleMenuMapper.updateDeleteFlagByMenuId(DeleteFlagEnum.DELETE.code(), menuId);
     }
 }

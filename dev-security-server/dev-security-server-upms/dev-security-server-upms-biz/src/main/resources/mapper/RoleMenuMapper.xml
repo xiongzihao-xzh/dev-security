@@ -28,4 +28,27 @@
         set delete_flag=#{updatedDeleteFlag}
         where menu_id=#{menuId}
     </update>
+    
+  <insert id="insertList">
+        INSERT INTO tb_role_menu(
+        role_id,
+        menu_id,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        delete_flag
+        )VALUES
+        <foreach collection="roleMenuList" item="element" index="index" separator=",">
+            (
+            #{element.roleId},
+            #{element.menuId},
+            #{element.createBy},
+            #{element.createTime},
+            #{element.updateBy},
+            #{element.updateTime},
+            #{element.deleteFlag}
+            )
+        </foreach>
+    </insert>
 </mapper>
