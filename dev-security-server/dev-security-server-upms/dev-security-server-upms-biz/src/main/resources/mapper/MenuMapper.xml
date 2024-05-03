@@ -21,4 +21,10 @@
     id, `name`, `type`, permission, `order`, parent_id, create_by, create_time, update_by, 
     update_time, delete_flag
   </sql>
+    
+  <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_menu
+  </select>
 </mapper>

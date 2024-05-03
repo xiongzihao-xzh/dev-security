@@ -16,4 +16,16 @@
     <!--@mbg.generated-->
     role_id, menu_id, create_by, create_time, update_by, update_time, delete_flag
   </sql>
+    
+  <update id="updateDeleteFlagByRoleId">
+        update tb_role_menu
+        set delete_flag=#{updatedDeleteFlag}
+        where role_id=#{roleId}
+    </update>
+    
+  <update id="updateDeleteFlagByMenuId">
+        update tb_role_menu
+        set delete_flag=#{updatedDeleteFlag}
+        where menu_id=#{menuId}
+    </update>
 </mapper>

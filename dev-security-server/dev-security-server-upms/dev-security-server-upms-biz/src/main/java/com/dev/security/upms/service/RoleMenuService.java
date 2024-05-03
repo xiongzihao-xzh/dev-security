@@ -6,4 +6,7 @@ package com.dev.security.upms.service;
  * @author <a href="mailto:xiongzihao_xzh@163.com">xzh</a>
  * @date 2024-05-02
  */
-public interface RoleMenuService {}
+public interface RoleMenuService {
+    void removeByRoleId(long roleId);
+    void removeByMenuId(long menuId);
+}
