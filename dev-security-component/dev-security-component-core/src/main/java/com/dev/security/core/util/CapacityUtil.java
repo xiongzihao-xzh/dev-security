@@ -11,6 +11,6 @@ public class CapacityUtil {
     private CapacityUtil() {}
 
     public static int getCapacity(int size) {
-        return (int) Math.max((size / 0.75) + 1, 16);
+        return Math.max((int) (size / 0.75f) + 1, 16);
     }
 }
