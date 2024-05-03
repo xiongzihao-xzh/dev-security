@@ -48,9 +48,9 @@ public class RoleServiceImpl implements RoleService {
         Role addRole = roleConvert.toEntity(roleDTO);
 
         long roleId = SnowflakeIDGenerate.next();
+        addRole.setId(roleId);
+        addRole.setDeleteFlag(DeleteFlagEnum.IN_USE.code());
         try {
-            addRole.setId(roleId);
-            addRole.setDeleteFlag(DeleteFlagEnum.IN_USE.code());
             roleMapper.insert(addRole);
         } catch (DuplicateKeyException e) {
             throw new ServiceException(InsertErrorCodeEnum.ROLE_DUPLICATE_KEY_ERROR);

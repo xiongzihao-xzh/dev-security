@@ -19,34 +19,36 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/department")
 public class DepartmentController {
-    
+
     private final DepartmentService departmentService;
-    
+
     /**
      * 添加部门
      */
     @PostMapping
     public CommonResult addDepartment(DepartmentDTO departmentDTO) {
         Department result = departmentService.addDepartment(departmentDTO);
-        
+
         return CommonResult.success(result);
     }
+
     /**
      * 更新部门
      */
     @PutMapping
     public CommonResult updateDepartment(DepartmentDTO departmentDTO) {
         Department result = departmentService.updateDepartment(departmentDTO);
-        
+
         return CommonResult.success(result);
     }
+
     /**
      * 删除部门
      */
     @DeleteMapping("/{id}")
     public CommonResult removeDepartment(@PathVariable long id) {
         departmentService.removeDepartment(id);
-        
+
         return CommonResult.success();
     }
 }

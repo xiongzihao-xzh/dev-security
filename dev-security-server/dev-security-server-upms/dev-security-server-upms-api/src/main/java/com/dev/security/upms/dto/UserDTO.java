@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * UserDTO
  *
@@ -17,4 +19,7 @@ public class UserDTO {
 
     private Long id;
     private String username;
+
+    private List<Long> roleIdList;
+    private List<Long> departmentIdList;
 }
