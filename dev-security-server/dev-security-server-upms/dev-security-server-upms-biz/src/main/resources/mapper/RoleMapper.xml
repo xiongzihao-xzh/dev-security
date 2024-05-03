@@ -17,4 +17,10 @@
         <!--@mbg.generated-->
         id, `name`, `order`, create_by, create_time, update_by, update_time, delete_flag
     </sql>
+
+    <update id="deleteById">
+        update tb_role
+        set delete_flag=1
+        where id=#{id}
+    </update>
 </mapper>

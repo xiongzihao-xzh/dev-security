@@ -24,7 +24,9 @@ public class UserRoleServiceImpl implements UserRoleService {
     private final UserRoleMapper userRoleMapper;
 
     @Override
-    public void binding(List<UserRole> userRoleList) {}
+    public void binding(List<UserRole> userRoleList) {
+        userRoleMapper.insertList(userRoleList);
+    }
 
     @Override
     public void unbindByUserId(long userId) {

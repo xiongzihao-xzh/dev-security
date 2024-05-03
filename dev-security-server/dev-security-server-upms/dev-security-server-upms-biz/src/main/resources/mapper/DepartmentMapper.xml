@@ -18,4 +18,10 @@
         <!--@mbg.generated-->
         id, `name`, `order`, parent_id, create_by, create_time, update_by, update_time, delete_flag
     </sql>
+
+    <update id="deleteById">
+        update tb_department
+        set delete_flag=1
+        where id=#{id}
+    </update>
 </mapper>
