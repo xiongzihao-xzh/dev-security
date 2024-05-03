@@ -12,6 +12,7 @@
 
     <modules>
         <module>dev-security-component-auth</module>
+        <module>dev-security-component-core</module>
     </modules>
 
 </project>
